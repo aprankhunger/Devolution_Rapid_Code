@@ -1,74 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <main>
-        <div class="masterContainer">
-            <div id="loginbox">
-                <div class="boxArea" id="graphic">
-                    <img src="./Graphic designing/flowers.png" alt="" id="graphicImage">
-                    <p>it's good to have you back</p>
-                </div>
-                <div class="boxArea" id="LoginArea">
-                    <form id="loginForm">
-                        <div class="boxItems">
-                            <img src="./Graphic designing/logo_small.png" alt="">
-                        </div>
-                        <div class="boxItems">
-                            <p>Welcome User</p>
-                        </div>
-                        <div class="boxItems inputs">
-                            <label for="username">username</label>       
-                            <input type="text" id="username" required>
-                        </div>
-                        <div class="boxItems inputs">
-                            <label for="pword">password</label>  
-                            <input type="password" id="pword" required>
-                        </div>
-                        <div class="boxItems">                            
-                            <input type="submit" value="SIGN IN" id="submitButton">      
-                        </div>
-                        <div class="boxItems" id="log-on">
-                            <p>New to Fortunez? <a href="./signup.html">Create Account</a></p>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <title>Virtual Keyboard | Login</title>
+    <link rel="stylesheet" href="loginstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  </head>
+  <body class="login-page" id="body">
+    <div class="bg1"></div>
+    <div class="bg2"></div>
+    <div class="bg3"></div>
+  
+
+  
+    <!-- Login/Sign-up Form Container -->
+    <div class="auth-container">
+      <div class="form-box">
+        <h1>Welcome to Virtual Keyboard</h1>
+        
+        <!-- Tab for Switching Between Sign In and Sign Up -->
+        <div class="tab">
+          <button class="tablinks active" onclick="openTab(event, 'login')">Login</button>
+          <button class="tablinks" onclick="openTab(event, 'signup')">Sign Up</button>
         </div>
-    </main>
+  
+        <!-- Login Form -->
+        <div id="login" class="tabcontent active">
+          <form action="home.html" method="post" class="form">
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+          </form>
+        </div>
+  
+        <!-- Sign Up Form -->
+        <div id="signup" class="tabcontent">
+          <form action="home.html" method="post" class="form">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <!-- JavaScript -->
     <script>
-        // Attach event listener to the form
-        let form = document.getElementById("loginForm");
 
-        form.addEventListener("submit", (event) => {
-            event.preventDefault(); // Prevent default form submission
+// Function to switch between tabs (login and sign up)
+function openTab(evt, tabName) {
+    let i, tabcontent, tablinks;
+  
+    // Hide all tabcontent
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].classList.remove("active");
+    }
+  
+    // Remove "active" class from all tablinks
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].classList.remove("active");
+    }
+  
+    // Show the selected tab content and mark the button as active
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.classList.add("active");
+  }
+  
+  // Function to toggle dark mode
+  const toggleDarkMode = () => {
+    const body = document.getElementById("body");
+    body.classList.toggle("dark-mode");
+  };
+  
+  // Add event listener for the dark mode checkbox
+  document.getElementById('dark-mode-toggle-checkbox').addEventListener('change', toggleDarkMode);
 
-            // Get form data
-            let username = document.getElementById("username").value;
-            let password = document.getElementById("pword").value;
-
-            // Retrieve stored users from localStorage
-            let storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-
-            // Check if the user exists and password matches
-            let userFound = storedUsers.find(
-                (user) => user.username === username && user.password === password
-            );
-
-            if (userFound) {
-                alert(`Login successful! Welcome back, ${userFound.username}`);
-                // Redirect to the index page
-                window.location.href = "index.html";
-            } else {
-                alert("Login failed! Invalid username or password.");
-            }
-        });
+  
+  
     </script>
 </body>
 </html>
