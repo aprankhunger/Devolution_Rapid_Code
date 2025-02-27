@@ -150,6 +150,7 @@ body {
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
     position: relative;
+    /* object-fit: cover; */
 }
 
 .child-classquiz::before {
@@ -192,18 +193,94 @@ body {
 }
 
 /* Testimonials with Fade Animation */
+/* Define Color Variables */
+:root {
+    --primary-color: #0a1420;
+    --secondary-color: #ACC6E6;
+}
+
+/* General Styles */
+.contain {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 #testimonials {
-    /* background: #f8f9fa; */
-    padding: 4rem 0;
+    padding: 50px 0;
+    background-color: var(--secondary-color); /* Use secondary color for background */
 }
 
-blockquote {
-    padding: 2rem;
-    /* background: white; */
-    border-radius: 8px;
-    animation: fadeIn 1s ease-in;
+#testimonials h2 {
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    color: var(--primary-color); /* Use primary color for heading */
 }
 
+/* Carousel Styles */
+.carousel {
+    position: relative;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-item {
+    display: none;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    position: relative;
+    width: 100%;
+}
+
+.carousel-item.active {
+    display: block;
+    opacity: 1;
+}
+
+.carousel-item blockquote {
+    font-size: 1.5rem;
+    color: var(--primary-color); /* Use primary color for text */
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: white; /* White background for contrast */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-item .blockquote-footer {
+    font-size: 1rem;
+    color: var(--primary-color); /* Use primary color for footer text */
+    opacity: 0.8;
+}
+
+/* Carousel Control Buttons */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    color: var(--primary-color); /* Use primary color for icons */
+    text-align: center;
+    opacity: 0.7;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--primary-color); /* Use primary color for icon background */
+    border-radius: 50%;
+    padding: 10px;
+}
+
+/* Animation for Carousel Items */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -213,6 +290,9 @@ blockquote {
     }
 }
 
+.carousel-item {
+    animation: fadeIn 1s ease-in-out;
+}
 /* Features Section with Icon Animations */
 #features {
     padding: 4rem 0;
@@ -247,6 +327,7 @@ blockquote {
     display: flex;
     justify-content: space-between;
     padding: 3rem 5%;
+    background-color: #132234;
     /* background: linear-gradient(135deg, #2c3e50, #34495e); */
     /* color: white; */
     position: relative;
