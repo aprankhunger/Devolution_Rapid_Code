@@ -1,0 +1,366 @@
+/* Basic Reset & Global Styles */
+
+:root {
+    --primary-color: #0a1420;
+    --secondary-color: #ACC6E6;
+    --animation-color: #17dc4b;
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--secondary-color);
+    background: var(--primary-color);
+    overflow-x: hidden;
+}
+
+/* Header Styles with Animation */
+.header {
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    /* position: sticky; */
+    top: 0;
+    z-index: 1000;
+    background: rgba(10, 20, 32, 0.2);  /* Semi-transparent background */
+    backdrop-filter: blur(10px);  /* Applies the blur effect */
+    -webkit-backdrop-filter: blur(10px);
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); */
+    animation: slideDown 0.8s ease-out;
+    z-index: 1000;
+}
+
+
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.logo {
+    color: var(--secondary-color);
+    font-size: 2rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navbar {
+    display: flex;
+    gap: 2rem;
+    /* position: fixed; */
+}
+
+.navbar a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--animation-color) ;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+/* Carousel Styles with Parallax Effect */
+.carousel {
+    margin-top: 20px;
+    /* background: #f4f4f4; */
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+.carousel-item {
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    animation: zoomIn 10s infinite alternate;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    background: rgba(0, 0, 0, 0.3);
+    transition: background 0.3s;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Events Section with Hover Effects */
+#card1-section {
+    padding: 4rem 0;
+    /* background: linear-gradient(135deg, #ffffff, #f4f4f4); */
+}
+
+.child2quiz {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.child-classquiz {
+    /* background: #fff; */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.child-classquiz::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(52, 152, 219, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.child-classquiz:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.child-classquiz:hover::before {
+    opacity: 1;
+}
+
+.card1-img-top {
+    height: 200px;
+    /* background: #ddd; */
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.child-classquiz:hover .card1-img-top {
+    transform: scale(1.1);
+}
+
+.card1-body {
+    padding: 1.5rem;
+    /* background: #fff; */
+    position: relative;
+    z-index: 1;
+}
+
+/* Testimonials with Fade Animation */
+#testimonials {
+    /* background: #f8f9fa; */
+    padding: 4rem 0;
+}
+
+blockquote {
+    padding: 2rem;
+    /* background: white; */
+    border-radius: 8px;
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Features Section with Icon Animations */
+#features {
+    padding: 4rem 0;
+    /* background: linear-gradient(135deg, #3498db, #2980b9); */
+    /* color: white; */
+}
+
+.fa {
+    /* color: white; */
+    transition: transform 0.3s;
+}
+
+.col-md-4:hover .fa {
+    transform: rotate(360deg) scale(1.2);
+}
+
+/* Blog Section with Card Flip Effect */
+.card1 {
+    /* border: 1px solid #eee; */
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.5s;
+    perspective: 1000px;
+}
+
+.card1:hover {
+    transform: rotateY(10deg) scale(1.05);
+}
+
+/* Footer Styles with Gradient Background */
+.footer-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 5%;
+    /* background: linear-gradient(135deg, #2c3e50, #34495e); */
+    /* color: white; */
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    /* background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent); */
+    animation: rotateGradient 10s linear infinite;
+}
+
+@keyframes rotateGradient {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.footer-icons a {
+    /* color: white; */
+    margin: 0 0.5rem;
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.footer-icons a:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .footer-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .child2quiz {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* ///////////////////////
+ */
+
+ /* From Uiverse.io by kamehame-ha */ 
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .container .red {
+    background-color: #f43f5e;
+  }
+  
+  .container .blue {
+    background-color: #3b82f6;
+  }
+  
+  .container .green {
+    background-color: #22c55e;
+  }
+  
+  .container .card1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100px;
+    width: 250px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: 400ms;
+  }
+  
+  .container .card1 p.tip {
+    font-size: 1em;
+    font-weight: 700;
+  }
+  
+  .container .card1 p.second-text {
+    font-size: .7em;
+  }
+  
+  .container .card1:hover {
+    transform: scale(1.1, 1.1);
+  }
+  
+  .container:hover > .card1:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.9, 0.9);
+  }
+
+ 
